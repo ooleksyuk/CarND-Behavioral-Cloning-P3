@@ -104,8 +104,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 The final model architecture (model.py method `create_model()` lines 124-137) consisted of a convolution neural network with the following layers and layer sizes: one 2D convolution, max pooling, dropout, flatten, dense.
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-
+----------------------------------------------
 | Layer (type) | Output Shape | Param # | Connected to |                     
 ----------------------------------------------
 | Normalization (Lambda) | (None, 25, 65, 1) | 0 | lambda_input_1[0][0] |             
