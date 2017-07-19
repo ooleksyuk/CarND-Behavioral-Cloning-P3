@@ -152,7 +152,7 @@ def train_model(model, X_train, y_train, batch_size):
     model.fit(X_train, y_train, batch_size=batch_size, verbose=1, validation_split=0.1, nb_epoch=25,shuffle=True)
     return model
     
-def main()
+if __name__ == '__main__':
     cropped_pixels_x = 40 
     cropped_pixels_y = -10
     channels = 1
@@ -162,7 +162,7 @@ def main()
     batch_size = 128
     X, y = [], []
     print("Parameters set")
-
+    
     samples = load_samples()
     print("Loaded samples")
     
