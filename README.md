@@ -27,8 +27,8 @@ The goals / steps of this project are the following:
 [image3]: ./examples/image_processing.png "Processing Images Before Training"
 [image4]: ./examples/placeholder_small.png "Recovery Image"
 [image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image6]: ./examples/run-track1.gif "Track 1"
+[image7]: ./examples/run-track2.gif "Track 2"
 [video1]: http://youtu.be/vt5fpE0bzSY "Track 1"
 [video2]: https://youtu.be/Vt1JVnPHcjA "Track 2"
 
@@ -46,8 +46,10 @@ My project includes the following files:
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
 * readme.md summarizing the results
-* video1 https://youtu.be/2AS5grRMcBg ![Track 1][video1]
-* video2 https://youtu.be/Vt1JVnPHcjA ![Track 2][video2]
+* video1 video summary of car driving on a track 1 ![video summary of car driving on a track 1][video1]
+* video2 video summary of car driving on a track 2 ![video summary of car driving on a track 2][video2]
+
+![Track 1][image6] ![Track 2][image7]
 
 ####2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
