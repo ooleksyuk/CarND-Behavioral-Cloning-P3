@@ -45,9 +45,10 @@ My project includes the following files:
 * utils.py contains help methods to process images and create baches
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
+* model.ipynd notebook with same code from model.py with visualization of model.summary and training results per epoch
 * readme.md summarizing the results
-* video1 [video summary of car driving on a track 1][http://youtu.be/vt5fpE0bzSY]
-* video2 [video summary of car driving on a track 2][https://youtu.be/Vt1JVnPHcjA]
+* video1 [video summary of car driving on a track 1](http://youtu.be/vt5fpE0bzSY) (full video)
+* video2 [video summary of car driving on a track 2](https://youtu.be/Vt1JVnPHcjA) (full video)
 
 ![Track 1][image6] ![Track 2][image7]
 
@@ -89,110 +90,59 @@ For details about how I created the training data, see the next section.
 
 ####1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+The overall strategy for deriving a model architecture was to build a model that trains fast and car stays on the road.
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+My first step was to use a convolution neural network model similar to the NVidia Newural Network. I thought this model might be appropriate because it has all layers and filters to train on drinving data.
+
+I stumbled upon the article about 1x1 kenel Convolution network. Descided to give it a try as a data I was using for training was already augmented by 3D modeling of the simulator. This model proved to be working well. It was training much faster than NVidia one and was producing similar results.
+
+I was watching mean square error on training set to be higher than on validation set. It means that my model was not overfitting.
+
+I split my data into training and validation set in ratio 90:10.
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that ...
-
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
+The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track, to improve the driving behavior in these cases, I added image processing and image resizing.
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
 ####2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
+The final model architecture (model.py method `create_model()` lines 124-137) consisted of a convolution neural network with the following layers and layer sizes: one 2D convolution, max pooling, dropout, flatten, dense.
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
-Getting a summary...
 ____________________________________________________________________________________________________
-Layer (type)                     Output Shape          Param #     Connected to
-====================================================================================================
-Normalization (Lambda)           (None, 200, 60, 1)    0           lambda_input_1[0][0]
+Layer (type)                     Output Shape          Param #     Connected to                     
 ____________________________________________________________________________________________________
-convolution2d_1 (Convolution2D)  (None, 200, 60, 2)    20          Normalization[0][0]
+Normalization (Lambda)           (None, 25, 65, 1)     0           lambda_input_1[0][0]             
 ____________________________________________________________________________________________________
-maxpooling2d_1 (MaxPooling2D)    (None, 50, 15, 2)     0           convolution2d_1[0][0]
+convolution2d_1 (Convolution2D)  (None, 23, 63, 2)     20          Normalization[0][0]              
 ____________________________________________________________________________________________________
-dropout_1 (Dropout)              (None, 50, 15, 2)     0           maxpooling2d_1[0][0]
+maxpooling2d_1 (MaxPooling2D)    (None, 5, 15, 2)      0           convolution2d_1[0][0]            
 ____________________________________________________________________________________________________
-flatten_1 (Flatten)              (None, 1500)          0           dropout_1[0][0]
+dropout_1 (Dropout)              (None, 5, 15, 2)      0           maxpooling2d_1[0][0]             
 ____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 1)             1501        flatten_1[0][0]
-====================================================================================================
-Total params: 1,521
-Trainable params: 1,521
+flatten_1 (Flatten)              (None, 150)           0           dropout_1[0][0]                  
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 1)             151         flatten_1[0][0]                  
+____________________________________________________________________________________________________
+Total params: 171
+Trainable params: 171
 Non-trainable params: 0
 ____________________________________________________________________________________________________
-![alt text][image1]
 
 ####3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
-
-![alt text][image2]
-
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving and processed vertion of it. To augment data I used image resizing and image cropping. I cropped off a sky, trees and a very bottom leyer of the picture. 
 
 ![alt text][image3]
-![alt text][image4]
-![alt text][image5]
 
-Then I repeated this process on track two in order to get more data points.
+I adjusted left and right camera images by adding/substraction delta from steernig data.
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+I finally randomly shuffled the data set and put 10% of the data into a validation set. 
 
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
-
-Overview
----
-This repository contains starting files for the Behavioral Cloning Project.
-
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
-
-We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
-
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
-
-This README file describes how to output the video in the "Details About Files In This Directory" section.
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/432/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
-The goals / steps of this project are the following:
-* Use the simulator to collect data of good driving behavior 
-* Design, train and validate a model that predicts a steering angle from image data
-* Use the model to drive the vehicle autonomously around the first track in the simulator. The vehicle should remain on the road for an entire loop around the track.
-* Summarize the results with a written report
+Train on 43394 samples, validate on 4822 samples.
 
 ### Dependencies
 This lab requires:
