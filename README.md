@@ -46,8 +46,8 @@ My project includes the following files:
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
 * readme.md summarizing the results
-* video1 video summary of car driving on a track 1 ![video summary of car driving on a track 1][video1]
-* video2 video summary of car driving on a track 2 ![video summary of car driving on a track 2][video2]
+* video1 [video summary of car driving on a track 1][http://youtu.be/vt5fpE0bzSY]
+* video2 [video summary of car driving on a track 2][https://youtu.be/Vt1JVnPHcjA]
 
 ![Track 1][image6] ![Track 2][image7]
 
