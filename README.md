@@ -106,23 +106,23 @@ The final model architecture (model.py method `create_model()` lines 124-137) co
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
 
-Layer (type) | Output Shape | Param # | Connected to                     
+| Layer (type) | Output Shape | Param # | Connected to |                     
 ----------------------------------------------
-Normalization (Lambda) | (None, 25, 65, 1) | 0 | lambda_input_1[0][0]             
+| Normalization (Lambda) | (None, 25, 65, 1) | 0 | lambda_input_1[0][0] |             
 ----------------------------------------------
-convolution2d_1 | (Convolution2D) | (None, 23, 63, 2) | 20 | Normalization[0][0]              
+| convolution2d_1 | (Convolution2D) | (None, 23, 63, 2) | 20 | Normalization[0][0] |              
 ----------------------------------------------
-maxpooling2d_1 | (MaxPooling2D) | (None, 5, 15, 2) | 0 | convolution2d_1[0][0]            
+| maxpooling2d_1 | (MaxPooling2D) | (None, 5, 15, 2) | 0 | convolution2d_1[0][0] |            
 ----------------------------------------------
-dropout_1 | (Dropout) | (None, 5, 15, 2) | 0 | maxpooling2d_1[0][0]             
+| dropout_1 | (Dropout) | (None, 5, 15, 2) | 0 | maxpooling2d_1[0][0] |             
 ----------------------------------------------
-flatten_1 | (Flatten) | (None, 150) | 0 | dropout_1[0][0]                  
+| flatten_1 | (Flatten) | (None, 150) | 0 | dropout_1[0][0] |                  
 ----------------------------------------------
-dense_1 | (Dense) | (None, 1) | 151 | flatten_1[0][0]                  
+| dense_1 | (Dense) | (None, 1) | 151 | flatten_1[0][0] |               
 ----------------------------------------------
-Total params: 171
-Trainable params: 171
-Non-trainable params: 0
+| Total params: 171 |
+| Trainable params: 171 |
+| Non-trainable params: 0 |
 ----------------------------------------------
 
 #### 3. Creation of the Training Set & Training Process
