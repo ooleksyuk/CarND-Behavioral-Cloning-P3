@@ -1,5 +1,4 @@
 ## <a name="top"></a> Deep Learning: Behaviorial Cloning [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013)
----
 
 ##Writeup Template
 
