@@ -1,12 +1,6 @@
-## <a name="top"></a> Deep Learning: Behaviorial Cloning [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013)
+## <a name="top"></a> Deep Learning: Behavioral Cloning [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013)
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Behavioral Cloning Project**
+### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
@@ -14,7 +8,6 @@ The goals / steps of this project are the following:
 * Train and validate the model with a training and validation set
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
-
 
 [//]: # (Image References)
 
@@ -24,10 +17,9 @@ The goals / steps of this project are the following:
 [video1]: http://youtu.be/vt5fpE0bzSY "Track 1"
 [video2]: https://youtu.be/Vt1JVnPHcjA "Track 2" 
 
----
 ### Files Submitted & Code Quality
 
-####1. Submission includes all required files and can be used to run the simulator in autonomous mode
+#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
